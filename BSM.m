@@ -4,7 +4,7 @@ strikeprice=input("Strike price: ");
 volatility=input("Stock's standard deviation: ");
 duration=input("Duration: ");
 r=input("Risk-free rate: ");
-% symbolic numbers for BS model
+% symbolic numbers for BS model function
 S = sym(stockprice);        % current stock price (spot price)
 K = sym(strikeprice);         % exercise price (strike price)
 sigma = sym(volatility);   % stock's std
@@ -16,6 +16,7 @@ d1 = (log(S/K) + (r + sigma^2/2)*T)/(sigma*sqrt(T));
 d2 = d1 - sigma*sqrt(T);
 t=sym('t');
 d=sym('d');
+% create N-distribution function
 N(d,t) = int(exp(-((t)^2)/2),t,-Inf,d)*1/sqrt(2*sym(pi));
 Csym = N(d1,T)*S - N(d2,T)*PV_K;
 %6 numbers precision depiction of the call option price
@@ -23,8 +24,10 @@ digits(6);
 C = vpa(Csym);
 %calculation of the similar put option price
 Psym= PV_K*N(-d2,T)-S*N(-d1,T);
-%6 numbers precision depiction of the call option price
+% numbers precision depiction of the call option price
 digits(6);
+% sym operator output type: Imaginary
+% derive Re(Psym)
 P = vpa(Psym);
 j=0;
 C=double(C);
