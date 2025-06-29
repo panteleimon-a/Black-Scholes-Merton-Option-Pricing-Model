@@ -32,4 +32,21 @@ The Black-Scholes model, also known as the Black-Scholes-Merton (BSM) model, is 
     - Risk-free rate
 
 ## Usage Example
+Stock price: 100
+Strike price: 100
+Stock's standard deviation: 0.2
+Duration: 12
+Risk-free rate: 0.05
+
+
+The script will output the call and put option prices, as well as their sensitivity to stock price changes.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
+
 
